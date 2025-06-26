@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter @ToString
 @Entity
+@Table(name = "Author_Table")
 public class Author {
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO) // this will automatically choose the suitable type according to the RDBMS we are using
