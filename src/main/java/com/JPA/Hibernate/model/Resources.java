@@ -21,4 +21,8 @@ public class Resources {
     private Long size;
 
     private String url;
+
+    @OneToOne
+    @JoinColumn(name = "lecture_id")
+    private Lecture lecture;
 }

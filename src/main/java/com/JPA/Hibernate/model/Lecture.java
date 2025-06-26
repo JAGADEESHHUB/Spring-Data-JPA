@@ -17,4 +17,13 @@ public class Lecture {
     private Integer id;
 
     private String name;
+
+    //owner
+    @ManyToOne
+    @JoinColumn(name = "section_id")
+    private Section section;
+
+    //inverse
+    @OneToOne(mappedBy = "lecture")
+    private Resources resources;
 }

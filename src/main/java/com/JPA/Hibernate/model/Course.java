@@ -4,6 +4,8 @@ package com.JPA.Hibernate.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter @ToString
 @Entity
@@ -18,4 +20,21 @@ public class Course {
     private String title;
 
     private String description;
+
+    //owner
+    @ManyToMany
+    @JoinTable(
+            name = "Author_course",
+            joinColumns = {
+                    @JoinColumn(name = "author_id") // this joinColumns will responsible to store the owner's id
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "course_id") // this inverseJoinColumns will responsible to store the inverse's id
+            }
+    )
+    private List<Author> authors;
+
+    //inverse
+    @OneToMany(mappedBy = "course")
+    private List<Section> sections;
 }

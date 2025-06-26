@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter @ToString
@@ -35,7 +36,7 @@ public class Author {
             nullable = false,
             updatable = false, // not able to update once created
             insertable = false // During the creation of the object (PUT/POST/INSERT), it won’t work.
-                               // But we keep that variable in Entity class because it's useful while getting data (GET/read).
+            // But we keep that variable in Entity class because it's useful while getting data (GET/read).
             /*
              During insert (POST/PUT):
              You don’t need to set it, because the DB inserts it automatically.
@@ -52,4 +53,14 @@ public class Author {
     )
     private LocalDateTime updatedAt;
 
+    //inverse
+    @ManyToMany(mappedBy = "authors") //the inverse entity should be mapped by the owner entity's Instance variable (List<Author> authors)
+    private List<Course> courses;
 }
+
+// remember owner always have @JoinTable and @JoinColumn
+// inverse always have mappedBy()
+// if we have mappedBy() then it is a Bi-directional otherwise it's a Uni-directional
+//refer Mappings Git repo
+
+//in this course all the mappings are Bi-directionals

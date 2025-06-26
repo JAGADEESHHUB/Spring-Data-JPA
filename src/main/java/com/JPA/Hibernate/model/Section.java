@@ -3,6 +3,8 @@ package com.JPA.Hibernate.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter @ToString
 @Entity
@@ -17,4 +19,13 @@ public class Section {
     private String name;
 
     private Long order;
+
+    //owner
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
+
+    //inverse
+    @OneToMany(mappedBy = "section")
+    private List<Lecture> lectures;
 }
