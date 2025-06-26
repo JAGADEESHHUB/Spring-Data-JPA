@@ -11,28 +11,31 @@ import java.time.LocalDateTime;
 @Table(name = "Author_Table")
 public class Author {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "seq_gen") //
-    @SequenceGenerator(name = "seq_gen", sequenceName = "author_seq_gen", allocationSize = 1) //Better performance than IDENTITY (because it pre-fetches IDs) but we cant use it on MySQL, we can only use this on postgresql and MSSQL
+    
+    
+    @GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "seq_gen") 
+    @SequenceGenerator(name = "seq_gen", sequenceName = "author_seq_gen", allocationSize = 1) 
     private Integer id;
 
     @Column(
             name = "First_Name",
-            length = 30 //this will make the length of the String char will be >= 30
+            length = 30 
     )
     private String firstName;
 
     private String lastName;
 
     @Column(
-            unique = true , //  so that this field should be unique
-            nullable = false // so that this field is mandatory
+            unique = true , 
+            nullable = false 
     )
     private String email;
 
     @Column(
             nullable = false,
-            updatable = false, // not able to update once created
-            insertable = false // During the creation of the object (PUT/POST/INSERT), it won’t work.
+            updatable = false, 
+            insertable = false 
+                               
             
     )
     private LocalDateTime createdAt;
