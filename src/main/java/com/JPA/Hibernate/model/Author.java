@@ -32,27 +32,6 @@ public class Author {
     )
     private String email;
 
-    @Column(
-            nullable = false,
-            updatable = false, // not able to update once created
-            insertable = false // During the creation of the object (PUT/POST/INSERT), it won’t work.
-            // But we keep that variable in Entity class because it's useful while getting data (GET/read).
-            /*
-             During insert (POST/PUT):
-             You don’t need to set it, because the DB inserts it automatically.
-
-             During read (GET):
-             You do want it, so your app (e.g., frontend or API consumer) can see when the record was created.
-             */
-    )
-    private LocalDateTime createdAt;
-
-    @Column(
-            nullable = false,
-            insertable = false
-    )
-    private LocalDateTime updatedAt;
-
     //inverse of Course
     @ManyToMany(mappedBy = "authors") //the inverse entity should be mapped by the owner entity's Instance variable (List<Author> authors)
     private List<Course> courses;
