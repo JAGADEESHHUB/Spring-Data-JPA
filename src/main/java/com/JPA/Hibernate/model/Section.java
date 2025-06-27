@@ -5,11 +5,12 @@ import lombok.*;
 
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter @ToString
 @Entity
 @Table(name = "Section_Table")
-public class Section {
+public class Section extends BaseEntities {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "section-seq-gen")

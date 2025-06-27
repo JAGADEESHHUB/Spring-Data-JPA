@@ -6,11 +6,12 @@ import lombok.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true) /* We use it to tell Lombok: “Please include fields from the parent class when checking if two objects are equal or generating their hashcode.”*/
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter @ToString
 @Entity
 @Table(name = "Author_Table")
-public class Author {
+public class Author extends BaseEntities {
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO) // this will automatically choose the suitable type according to the RDBMS we are using
     //@GeneratedValue(strategy = GenerationType.IDENTITY) // this will use the database’s built-in AUTO_INCREMENT.

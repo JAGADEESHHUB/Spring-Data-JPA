@@ -6,11 +6,12 @@ import lombok.*;
 
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter @ToString
 @Entity
 @Table(name = "Course_Table")
-public class Course {
+public class Course extends BaseEntities{
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "course-seq-gen")
