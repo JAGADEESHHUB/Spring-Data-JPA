@@ -22,6 +22,7 @@ public class Resources {
 
     private String url;
 
+    //owner of Lecture
     @OneToOne
     @JoinColumn(name = "lecture_id")
     private Lecture lecture;

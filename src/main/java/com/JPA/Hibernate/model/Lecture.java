@@ -18,12 +18,12 @@ public class Lecture {
 
     private String name;
 
-    //owner
+    //owner of Section
     @ManyToOne
     @JoinColumn(name = "section_id")
     private Section section;
 
-    //inverse
+    //inverse of Resource
     @OneToOne(mappedBy = "lecture")
     private Resources resources;
 }

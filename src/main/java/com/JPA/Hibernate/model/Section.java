@@ -20,12 +20,12 @@ public class Section {
 
     private Long order;
 
-    //owner
+    //owner of Course // decided because 'Section dhaa Course oda id(as FK) vachu irukum'
     @ManyToOne
     @JoinColumn(name = "course_id")
     private Course course;
 
-    //inverse
+    //inverse of Lecture
     @OneToMany(mappedBy = "section")
     private List<Lecture> lectures;
 }
