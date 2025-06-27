@@ -1,4 +1,4 @@
-package com.JPA.Hibernate.repositories;
+package com.JPA.Hibernate.repository;
 
 import com.JPA.Hibernate.model.Author;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,11 +9,6 @@ import java.util.List;
 @Repository
 public interface AuthorRepository extends JpaRepository<Author, Integer> {
 
-    //Derived methods/Queries --> this is managed by Hibernate..
-
-    List<Author> findByFirstNameContainingIgnoreCase(String firstName);
-
-    List<Author> findByLastNameContainingIgnoreCase(String lastName);
-
+    //Derived method/Queries --> managed by Hibernate
     boolean existsByEmail(String email);
 }

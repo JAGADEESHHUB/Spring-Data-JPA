@@ -1,7 +1,6 @@
 package com.JPA.Hibernate.controller;
 
 import com.JPA.Hibernate.model.Author;
-import com.JPA.Hibernate.service.AuthorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
