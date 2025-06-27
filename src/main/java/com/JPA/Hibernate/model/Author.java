@@ -21,45 +21,19 @@ public class Author extends BaseEntities {
 
     @Column(
             name = "First_Name",
-            length = 30 //this will make the length of the String char will be >= 30
+            length = 30
     )
     private String firstName;
 
     private String lastName;
 
     @Column(
-            unique = true , //  so that this field should be unique
-            nullable = false // so that this field is mandatory
+            unique = true ,
+            nullable = false
     )
     private String email;
 
     //inverse of Course
-    @ManyToMany(mappedBy = "authors") //the inverse entity should be mapped by the owner entity's Instance variable (List<Author> authors)
+    @ManyToMany(mappedBy = "authors")
     private List<Course> courses;
 }
-/*
-Question	                       Answer
-Which side has the foreign key?	   ✅ That’s the owning side (child in DB)
-Which side has @JoinColumn?	       ✅ That’s the owning/parent side
-Which side has mappedBy?	       ❌ That’s the inverse (non-owning) side
-
-⚠️ Misconception Warning - In Java OOP terms: Author feels like the parent of Book. But in JPA database terms, Book is the owning side because it holds the FK.
- */
-
-/*
-In a Many-to-Many mapping, the concept of "parent table" is not defined by the database foreign key (because both FKs live in a join table).
-
-Instead, you decide the parent based on:
-1. Business logic
-2. Use case flow
-3. Who “controls” the relationship in code (JPA owning side)
-
-***** here the example is relationship between Author and Course ******
- */
-
-// remember owner always have @JoinTable and @JoinColumn
-// inverse always have mappedBy()
-// if we have mappedBy() then it is a Bi-directional otherwise it's a Uni-directional
-//refer Mappings Git repo for TYPES OF MAPPINGS
-
-//in this course all the mappings are Bi-directionals

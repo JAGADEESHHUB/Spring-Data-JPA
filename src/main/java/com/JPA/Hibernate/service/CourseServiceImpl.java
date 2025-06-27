@@ -12,11 +12,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class CourseServiceImpl{
 
     private final CourseRepository courseRepository;
     private final AuthorRepository authorRepository;
+
+    public CourseServiceImpl(CourseRepository courseRepository, AuthorRepository authorRepository) {
+        this.courseRepository = courseRepository;
+        this.authorRepository = authorRepository;
+    }
 
 
     public Course createCourse(Course course) {
@@ -37,6 +41,9 @@ public class CourseServiceImpl{
         return courseRepository.findAll();
     }
 
+    public Course getCourseById(Integer id){
+        return courseRepository.findById(id).orElseThrow(()-> new RuntimeException("Course with is not found"));
+    }
 
     public void deleteCourse(Integer id) {
         if (!courseRepository.existsById(id)) {

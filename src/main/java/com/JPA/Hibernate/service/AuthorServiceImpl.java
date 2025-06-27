@@ -9,15 +9,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
-@Transactional
 public class AuthorServiceImpl {
 
     private final AuthorRepository authorRepository;
     private final CourseRepository courseRepository;
+
+    public AuthorServiceImpl(AuthorRepository authorRepository, CourseRepository courseRepository) {
+        this.authorRepository = authorRepository;
+        this.courseRepository = courseRepository;
+    }
 
 
     public Author createAuthor(Author author) {
@@ -43,6 +45,9 @@ public class AuthorServiceImpl {
         return authorRepository.findAll();
     }
 
+    public Author getAuthorById(Integer id){
+        return authorRepository.findById(id).orElseThrow(()-> new RuntimeException("Author with id is not Found"));
+    }
 
 
     public void deleteAuthor(Integer id) {
