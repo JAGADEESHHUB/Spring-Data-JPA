@@ -2,7 +2,6 @@ package com.JPA.Hibernate.service;
 
 
 import com.JPA.Hibernate.model.Author;
-import com.JPA.Hibernate.repositories.AuthorRepo;
 import org.springframework.stereotype.Service;
 
 @Service
